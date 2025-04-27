@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sanitation Across the World Over Time</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body style="margin:0; padding:0;">
+
+<div id="sanitation_map" style="width:100%; height:100vh;"></div>
+
+<script>
+    var data = [{
+        type: 'choropleth',
+        locations: ['USA', 'IND', 'BRA', 'ZAF'],
+        z: [98, 67, 85, 74],
+        locationmode: 'ISO-3',
+        text: ['United States', 'India', 'Brazil', 'South Africa'],
+        colorscale: 'Reds',
+        colorbar: {
+            title: 'Sanitation (%)',
+            ticksuffix: '%'
+        },
+        hovertemplate:
+            "<b>%{text}</b><br><br>" +
+            "Sanitation: %{z:.2f}%<extra></extra>"
+    }];
+
+    var layout = {
+        title: {
+            text: 'Sanitation Across the World Over Time',
+            font: { size: 24, family: 'Arial', color: 'black' },
+            x: 0.5
+        },
+        geo: {
+            showocean: true,
+            oceancolor: "#0B9ED2",
+            showland: true,
+            landcolor: "#C19A6B",
+            showcountries: true,
+            countrycolor: "grey",
+            showcoastlines: true,
+            coastlinecolor: "black",
+            projection: {
+                type: 'orthographic',
+                scale: 1
+            },
+            showframe: true,
+            framecolor: "black"
+        },
+        height: 600,
+        margin: { r: 0, l: 0, b: 0, t: 50 }
+    };
+
+    Plotly.newPlot('sanitation_map', data, layout, {responsive: true});
+</script>
+
+</body>
+</html>
